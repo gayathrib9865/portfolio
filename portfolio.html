@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    /* nav */
+    nav {
+            background-color: black;
+            border: 4px solid gold;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 60px; /* Increased size */
+            width: 60px; /* Increased size */
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo img:hover {
+            transform: scale(1.5);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        nav a {
+            color: gold;
+            text-decoration: none;
+            padding: 15px 20px;
+            margin: 0 10px;
+            font-size: 18px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+
+        nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: gold;
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s ease;
+        }
+
+        nav a:hover {
+            color: black;
+            background-color: gold;
+        }
+
+        nav a:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 10px;
+                margin: 5px 0;
+                width: 100%;
+            }
+        }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #000000;
+      color: #FFD700;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(to right, #111, #000);
+      animation: fadeInTop 1.2s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      margin: 0;
+      color: #FFD700;
+      letter-spacing: 1px;
+    }
+
+    .portfolio {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 40px 5vw;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      background: rgba(17, 17, 17, 0.7);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .project-row:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.25);
+    }
+
+    .project-image {
+      flex: 1 1 300px;
+      min-width: 280px;
+      height: 220px;
+      background-color: #222;
+      border: 1px solid #FFD700;
+      border-radius: 12px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .project-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #FFD70080;
+    }
+
+    .project-content {
+      flex: 2 1 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .project-content h2 {
+      margin: 0 0 10px;
+      color: #FFD700;
+      font-size: 2rem;
+    }
+
+    .project-content p {
+      color: #ccc;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .project-content a {
+      display: inline-block;
+      color: #FFD700;
+      text-decoration: none;
+      border: 1px solid #FFD700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .project-content a:hover {
+      background-color: #fad60b;
+      color: #000;
+      box-shadow: 0 0 12px #ecc90390;
+    }
+
+    @media (max-width: 768px) {
+      .project-row {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 180px;
+      }
+
+      .project-content {
+        align-items: center;
+      }
+
+      .project-content a {
+        align-self: center;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInTop {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <div class="nav-links">
+        <a href="./index.html">About</a>
+        <a href="./portfolio.html">Portfolio</a>
+        <a href="./skills.html">Skills</a>
+        <a href="./contact.html">Contact</a>
+    </div>
+</nav>
+
+  <div class="portfolio">
+    <div class="project-row" data-aos="fade-right">
+      <div class="project-image" style="background-image: url('skillforgez.png');"></div>
+      <div class="project-content">
+        <h2>Landing Page for Meta Ad</h2>
+        <p>Developed a responsive landing page for Skill Forgez to support Meta ad campaigns. Enhanced engagement and lead generation using HTML, CSS, and JavaScript.</p>
+        <a href="https://gayathrib9865.github.io/Skillforgez-new/" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-row" data-aos="fade-left">
+      <div class="project-image" style="background-image: url('faminfo.png');"></div>
+      <div class="project-content">
+        <h2>Growth X Website</h2>
+        <p>Designed and built a dynamic site for FAM Info Media to showcase services and convert visitors into leads. Built using HTML, CSS, JavaScript, Bootstrap, and Java.</p>
+        <a href="https://karthishruhi.github.io/FamInfo/" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-row" data-aos="fade-right">
+      <div class="project-image" style="background-image: url('./sps.png');"></div>
+      <div class="project-content">
+        <h2>Stone Paper Scissors Game</h2>
+        <p>A classic game with animated result, emoji winner messages, and a reset feature. Developed using HTML, CSS, and JavaScript.</p>
+        <a href="https://gayathrib9865.github.io/Sps/" target="_blank">View Project</a>
+      </div>
+    </div>
+
+    <div class="project-row" data-aos="fade-left">
+      <div class="project-image" style="background-image: url('./xo.png');"></div>
+      <div class="project-content">
+        <h2>XO Game (Tic Tac Toe)</h2>
+        <p>Enhanced XO game with animated winner message 🔥, neon restart button, glowing borders, and mobile responsiveness. Built with HTML, CSS, and JavaScript.</p>
+        <a href="https://gayathrib9865.github.io/Sps/" target="_blank">View Project</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  </script>
+</body>
+</html>
